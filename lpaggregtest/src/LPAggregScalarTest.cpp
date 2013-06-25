@@ -7,7 +7,7 @@
 
 #include <argp.h>
 #include <cstdlib>
-#include <time.h>
+#include <sys/time.h>
 #include <ScalarLPAggreg.h>
 #include <iostream>
 #include <fstream>

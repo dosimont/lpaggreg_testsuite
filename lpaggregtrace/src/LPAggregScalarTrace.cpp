@@ -27,7 +27,9 @@ int main(int argc, const char* argv[]){
 	 * argv[3] = output file
 	 *
 	 */
-	//rand_r((unsigned int*)(time(NULL)));
+
+	//init random seed
+	srand(time(NULL));
 
 	//trace element number
 	int elements = atoi(argv[1]);
