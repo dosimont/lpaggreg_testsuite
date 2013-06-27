@@ -62,7 +62,7 @@ int main(int argc, const char* argv[]){
 		//id
 		output << argv[5];
 		//trace Type
-		output << ", "<< randomTrace;
+		output << ", "<< argv[3];
 		double p = param;
 		//Parameter Type
 		if (param==2){

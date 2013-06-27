@@ -26,4 +26,4 @@ do
   done
 done
 
-$testpgm $input $output
+taskset 0x00000001 $testpgm $input $output

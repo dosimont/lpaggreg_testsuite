@@ -70,7 +70,7 @@ int main(int argc, const char* argv[]){
     	vector<int>parts = algo.getParts(parameter);
 
     	//Get and write in the ouput file time duration for each process
-    	output << atof((*loop)[0].c_str()) <<", "<<  parts.size() << ", "<< atof((*loop)[1].c_str()) <<", "<< atof((*loop)[2].c_str()) <<", "<< algo.getQualityCount() <<", "<< algo.getBestCutCount() <<", "<< algo.getBestPartitionCount() <<", "<< algo.getQualityDuration() <<", " << algo.getBestCutDuration()<<", "<<algo.getBestPartitionDuration()<< endl;
+    	output << (*loop)[0] <<", "<<  parts.size() << ","<< (*loop)[1] <<","<< (*loop)[2] <<", "<< algo.getQualityCount() <<", "<< algo.getBestCutCount() <<", "<< algo.getBestPartitionCount() <<", "<< algo.getQualityDuration() <<", " << algo.getBestCutDuration()<<", "<<algo.getBestPartitionDuration()<< endl;
     }
 
 
