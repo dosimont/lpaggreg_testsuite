@@ -11,7 +11,7 @@ elements=`seq 10 10 90`
 elements1=`seq 100 100 900`
 elements2=`seq 1000 1000 9000`
 i=0
-echo "Parameter, Trace" > $input
+echo "ID, SIZE, TYPE, PARAM, INST1, INST2, INST3, TEMP1, TEMP2, TEMP3" > $input
 for el in $elements $elements1 $elements2
 do
   for ttype in I A
