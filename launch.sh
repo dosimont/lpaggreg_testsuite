@@ -10,9 +10,10 @@ row=100
 elements=`seq 10 10 90`
 elements1=`seq 100 100 900`
 elements2=`seq 1000 1000 9000`
+elements3=`seq 10000 2000 18000`
 i=0
-echo "ID, SIZE, TYPE, PARAM, INST1, INST2, INST3, TEMP1, TEMP2, TEMP3" > $input
-for el in $elements $elements1 $elements2
+echo "ID, TRACE_TYPE, PARAM_TYPE, PARAM, TRACE" > $input
+for el in $elements $elements1 $elements2 $elements3
 do
   for ttype in I A
   do
