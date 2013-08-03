@@ -4,13 +4,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/LPAggregScalarTrace.cpp 
+../src/LPAggregNodeTrace.cpp 
 
 OBJS += \
-./src/LPAggregScalarTrace.o 
+./src/LPAggregNodeTrace.o 
 
 CPP_DEPS += \
-./src/LPAggregScalarTrace.d 
+./src/LPAggregNodeTrace.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

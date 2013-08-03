@@ -23,15 +23,14 @@ int main(int argc, const char* argv[]){
 
 	/*Parameter list:
 	 *
-	 * argv[1] = trace type ("A"/"B"/"C")
-	 * argv[2] = trace leaf(A)/nodes number(BC)
-	 * argv[3] = tree structure(A)
-	 *
-	 * argv[4] = line number
+	 * argv[1] = id
+	 * argv[2] = line number
+	 * argv[3] = node number
+	 * argv[4] = tree structure(int, 0=Aléatoire)
 	 * argv[5] = random type ("I"/"A")
 	 * argv[6] = param type ("0", "1", "A")
-	 * argv[7] = id
-	 * argv[8] = output file
+	 *
+	 * argv[7] = output file
 	 *
 	 */
 
@@ -39,10 +38,10 @@ int main(int argc, const char* argv[]){
 	srand(time(NULL));
 
 	//trace element number
-	int elements = atoi(argv[2]);
+	int elements = atoi(argv[3]);
 
 	//line number
-	int rows = atoi(argv[4]);
+	int lines = atoi(argv[2]);
 
 	//trace type
 	bool randomTrace = (!strcmp(argv[5],"A"))?true:false;
@@ -55,18 +54,15 @@ int main(int argc, const char* argv[]){
 		param=1;
 
 	//Open ouput files
-	std::ofstream output(argv[8]);
+	std::ofstream output(argv[7]);
 
 	//Generating file header
-	//output << "ID, Trace Type, Leaf/Nodes Number, Tree, Random Type, Parameter Type, Parameter, Trace" << endl;
+	//output << "ID, Nodes, Tree, Random Type, Parameter Type, Parameter, Trace" << endl;
 
 	//Generating a row
-	for (int i=0; i < rows; i++){
+	for (int i=0; i < lines; i++){
 		//id
-		output << argv[7];
-		//trace Type
-		output << ", "<< argv[1];
-		output << ", "<< argv[2];
+		output << argv[1];
 		output << ", "<< argv[3];
 		output << ", "<< argv[4];
 		output << ", "<< argv[5];
