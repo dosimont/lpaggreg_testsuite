@@ -1,2 +1,7 @@
+results/
+results/*
 results/input
 results/output
+
+lpaggregtrace/Release/lpaggregtrace
+lpaggregtest/Release/lpaggregtest

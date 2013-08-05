@@ -17,6 +17,8 @@
 #include <string>
 #include <math.h>
 #include <time.h>
+#include <string>
+#include <string.h>
 #include "CSVIterator.h"
 
 using namespace std;
@@ -41,7 +43,7 @@ int main(int argc, const char* argv[]){
 
 	//Skip the first line (name fields)
 	loop++;
-	//Input: "ID, Nodes, Tree, Random Type, Parameter Type, Parameter, Trace"
+	//Input: "ID, Nodes, Tree, Random Type, Parameter Type, Parameter"
 	//Write name fields in the output file (first line)
 	output << "ID, NODES, LEAVES, TREE, TYPE, PARAM, INST1, INST2, INST3, TEMP1, TEMP2, TEMP3" << endl;
 
@@ -52,6 +54,7 @@ int main(int argc, const char* argv[]){
     	int number = atoi((*loop)[1].c_str())+1;
     	int tree = atoi((*loop)[2].c_str());
     	float parameter = atof((*loop)[5].c_str());
+    	const char *random = (*loop)[3].c_str();
     	//Vector for storing trace elements
     	vector<NodeLPAggreg*>elements;
     	vector<NodeLPAggreg*>leaves;
@@ -85,7 +88,7 @@ int main(int argc, const char* argv[]){
     	}
 
     	for (unsigned int i=0; i< leaves.size(); i++){
-    		leaves[i]->setValue(atoi((*loop)[i+6].c_str()));
+    		leaves[i]->setValue(!strcmp(random,"A")?rand():1);
     	}
 
     	//Init -> compute qualities

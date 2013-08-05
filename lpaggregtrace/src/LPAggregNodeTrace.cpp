@@ -38,13 +38,13 @@ int main(int argc, const char* argv[]){
 	srand(time(NULL));
 
 	//trace element number
-	int elements = atoi(argv[3]);
+	//int elements = atoi(argv[3]);
 
 	//line number
 	int lines = atoi(argv[2]);
 
 	//trace type
-	bool randomTrace = (!strcmp(argv[5],"A"))?true:false;
+	//bool randomTrace = (!strcmp(argv[5],"A"))?true:false;
 
 	//param type
 	int param = 0;
@@ -57,7 +57,7 @@ int main(int argc, const char* argv[]){
 	std::ofstream output(argv[7]);
 
 	//Generating file header
-	//output << "ID, Nodes, Tree, Random Type, Parameter Type, Parameter, Trace" << endl;
+	//output << "ID, Nodes, Tree, Random Type, Parameter Type, Parameter << endl;
 
 	//Generating a row
 	for (int i=0; i < lines; i++){
@@ -75,13 +75,6 @@ int main(int argc, const char* argv[]){
 			output << ", " << param;
 		//Parameter
 		output << ", "<< p;
-		//Trace
-		for (int j=0; j < elements; j++){
-			int n =1;
-			if (randomTrace)
-				n =rand();
-			output << ", "<< n;
-		}
 		output << endl;
 	}
 	return 0;
