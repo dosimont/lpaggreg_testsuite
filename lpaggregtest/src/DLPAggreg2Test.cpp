@@ -14,16 +14,16 @@ int f_DLPAggreg2Test(){
 	vector <double> values1;
 	vector <double> values2;
 	vector <double> values3;
-	values0.push_back(0);
+	values0.push_back(8);
 	values0.push_back(500);
-	values0.push_back(0.3);
+	values0.push_back(8);
 	values0.push_back(10000);
 	values1.push_back(200);
 	values1.push_back(4);
 	values1.push_back(345);
 	values1.push_back(5);
 	values2.push_back(30000);
-	values2.push_back(0);
+	values2.push_back(4);
 	values2.push_back(1);
 	values2.push_back(398);
 	values3.push_back(4);
@@ -53,28 +53,34 @@ int f_DLPAggreg2Test(){
 	cout<<"B"<<endl;
 	father->computeQualities(true);
 	cout<<"C"<<endl;
-	father->computeAggregation(0.0);
+	father->computeAggregation(0.95);
 	cout<<"D"<<endl;
 
 	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++)
-	cout<<father->getOptimalPartitions()[i];
+	cout<<father->getOptimalPartitions()[i]<<" ";
 	cout<<endl;
+	cout<<"-----"<<endl;
 	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++)
-	cout<<father->getChildNodes()[0]->getOptimalPartitions()[i];
+	cout<<father->getChildNodes()[0]->getOptimalPartitions()[i]<<" ";
 	cout<<endl;
+	cout<<"-----"<<endl;
 	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++)
-		cout<<father->getChildNodes()[0]->getChildNodes()[0]->getOptimalPartitions()[i];
+		cout<<father->getChildNodes()[0]->getChildNodes()[0]->getOptimalPartitions()[i]<<" ";
 	cout<<endl;
+	cout<<"-----"<<endl;
 	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++)
-		cout<<father->getChildNodes()[0]->getChildNodes()[1]->getOptimalPartitions()[i];
+		cout<<father->getChildNodes()[0]->getChildNodes()[1]->getOptimalPartitions()[i]<<" ";
 	cout<<endl;
+	cout<<"-----"<<endl;
 	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++)
-	cout<<father->getChildNodes()[1]->getOptimalPartitions()[i];
+	cout<<father->getChildNodes()[1]->getOptimalPartitions()[i]<<" ";
 	cout<<endl;
+	cout<<"-----"<<endl;
 	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++)
-		cout<<father->getChildNodes()[1]->getChildNodes()[0]->getOptimalPartitions()[i];
+		cout<<father->getChildNodes()[1]->getChildNodes()[0]->getOptimalPartitions()[i]<<" ";
 	cout<<endl;
+	cout<<"-----"<<endl;
 	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++)
-		cout<<father->getChildNodes()[1]->getChildNodes()[1]->getOptimalPartitions()[i];
+		cout<<father->getChildNodes()[1]->getChildNodes()[1]->getOptimalPartitions()[i]<<" ";
 	return 0;
 }

@@ -8,6 +8,7 @@
 
 #include <cstdlib>
 #include "DLPAggreg2Test.h"
+#include "DLPAggreg2Test2.h"
 
 
 using namespace std;
@@ -16,5 +17,6 @@ using namespace std;
 int main(int argc, const char* argv[]){
 	cout<<"test"<<endl;
 	f_DLPAggreg2Test();
+	//f_DLPAggreg2Test2();
 
 }
