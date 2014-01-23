@@ -11,7 +11,7 @@
 #include <argp.h>
 #include <cstdlib>
 #include <sys/time.h>
-#include <OLPAggreg1.h>
+#include <lpaggreg/OLPAggreg1.h>
 #include <iostream>
 #include <fstream>
 #include <iterator>

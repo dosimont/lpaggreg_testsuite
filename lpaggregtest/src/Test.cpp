@@ -15,7 +15,7 @@ using namespace std;
 
 
 int main(int argc, const char* argv[]){
-	cout<<"test"<<endl;
+	cout<<"Test launched"<<endl;
 	f_DLPAggreg2Test();
 	//f_DLPAggreg2Test2();
 

@@ -6,81 +6,52 @@
  */
 
 #include "DLPAggreg2Test.h"
+#define SIZE 20
+#define NODES 18
+#define CHILDS 2
+#define THRESHOLD 0.00001
 
 
 int f_DLPAggreg2Test(){
-	cout<<"0"<<endl;
-	vector <double> values0;
-	vector <double> values1;
-	vector <double> values2;
-	vector <double> values3;
-	values0.push_back(8);
-	values0.push_back(500);
-	values0.push_back(8);
-	values0.push_back(10000);
-	values1.push_back(200);
-	values1.push_back(4);
-	values1.push_back(345);
-	values1.push_back(5);
-	values2.push_back(30000);
-	values2.push_back(4);
-	values2.push_back(1);
-	values2.push_back(398);
-	values3.push_back(4);
-	values3.push_back(1045667);
-	values3.push_back(4);
-	values3.push_back(3);
-	cout<<"A"<<endl;
-	DLPAggreg2 * father = new DLPAggreg2(0);
-	cout<<"Father"<<endl;
-	father->addChild(new DLPAggreg2(1));
-	father->addChild(new DLPAggreg2(2));
-	cout<<"Childs"<<endl;
-	DLPAggreg2 * temp = new DLPAggreg2(3);
-	temp->setValues(values0);
-	father->getChildNodes()[0]->addChild(temp);
-	temp = new DLPAggreg2(4);
-	temp->setValues(values1);
-	father->getChildNodes()[0]->addChild(temp);
-	cout<<"1"<<endl;
-	temp = new DLPAggreg2(5);
-	temp->setValues(values2);
-	father->getChildNodes()[1]->addChild(temp);
-	temp = new DLPAggreg2(6);
-	temp->setValues(values3);
-	father->getChildNodes()[1]->addChild(temp);
-	//bug avec les values
-	cout<<"B"<<endl;
-	father->computeQualities(true);
-	cout<<"C"<<endl;
-	father->computeAggregation(0.95);
-	cout<<"D"<<endl;
-
-	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++)
-	cout<<father->getOptimalPartitions()[i]<<" ";
-	cout<<endl;
-	cout<<"-----"<<endl;
-	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++)
-	cout<<father->getChildNodes()[0]->getOptimalPartitions()[i]<<" ";
-	cout<<endl;
-	cout<<"-----"<<endl;
-	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++)
-		cout<<father->getChildNodes()[0]->getChildNodes()[0]->getOptimalPartitions()[i]<<" ";
-	cout<<endl;
-	cout<<"-----"<<endl;
-	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++)
-		cout<<father->getChildNodes()[0]->getChildNodes()[1]->getOptimalPartitions()[i]<<" ";
-	cout<<endl;
-	cout<<"-----"<<endl;
-	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++)
-	cout<<father->getChildNodes()[1]->getOptimalPartitions()[i]<<" ";
-	cout<<endl;
-	cout<<"-----"<<endl;
-	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++)
-		cout<<father->getChildNodes()[1]->getChildNodes()[0]->getOptimalPartitions()[i]<<" ";
-	cout<<endl;
-	cout<<"-----"<<endl;
-	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++)
-		cout<<father->getChildNodes()[1]->getChildNodes()[1]->getOptimalPartitions()[i]<<" ";
+	srand(time(NULL));
+	vector <double> values;
+	vector <DLPAggreg1 *> nodes = vector<DLPAggreg1*>();
+	nodes.push_back(new DLPAggreg1(0));
+	for (int i=1; i<=NODES; i++){
+		nodes.push_back(new DLPAggreg1(i));
+		nodes[(i-1)/(CHILDS)]->addChild(nodes[i]);
+	}
+	cout<<"Values"<<endl;
+	for (int i=1; i<=NODES; i++){
+		if (!nodes[i]->hasChild()){
+			values.clear();
+			cout<<endl<<"Node "<<i<<":    ";
+			for (int j=0; j<SIZE; j++){
+				int temp=rand()%20+1;
+				values.push_back(temp);
+				cout<<temp<<" ";
+			}
+			nodes[i]->setValues(values);
+		}
+	}
+	nodes[0]->computeQualities(false);
+	while(true){
+		cout<<endl<<endl<<"Parameters"<<endl<<endl;
+		vector<float> p=nodes[0]->getParameters(THRESHOLD);
+		for (unsigned int i=0; i<p.size(); i++)
+			cout<<p[i]<<" ";
+		cout<<endl;
+		float param;
+		cin>>param;
+		nodes[0]->computeAggregation(param);
+		cout<<"Aggregation"<<endl<<endl;
+		for (int i=1; i<=NODES; i++){
+			if (!nodes[i]->hasChild()){
+				cout<<endl<<"Node "<<i<<":    ";
+				for (unsigned int j=0; j<nodes[i]->getBestPartitions().size(); j++)
+						cout<<nodes[i]->getBestPartitions()[j]<<" ";
+			}
+		}
+	}
 	return 0;
 }

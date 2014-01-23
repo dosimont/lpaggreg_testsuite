@@ -24,39 +24,46 @@ int f_DLPAggreg2Test2(){
 	values1.push_back(10);
 	values1.push_back(1000);
 	values1.push_back(100);
-	DLPAggreg2 * father = new DLPAggreg2(0);
-	DLPAggreg2 * child1 = new DLPAggreg2(1);
-	DLPAggreg2 * child2 = new DLPAggreg2(2);
+	DLPAggreg1 * father = new DLPAggreg1(0);
+	DLPAggreg1 * child1 = new DLPAggreg1(1);
+	DLPAggreg1 * child2 = new DLPAggreg1(2);
 	child1->setValues(values0);
 	child2->setValues(values1);
 	father->addChild(child1);
 	father->addChild(child2);
 	father->computeQualities(false);
-	father->computeAggregation(0.0);
-
-
-	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++){
-		for (unsigned int j=0; j<father->getOptimalPartitions().size()-i; j++){
-			cout<<child1->getQualities()[i][j]->getGain()<<"; ";
-	}
-		cout<<endl;
-	}
-
-	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++){
-		for (unsigned int j=0; j<father->getOptimalPartitions().size()-i; j++){
-			cout<<child1->getQualities()[i][j]->getLoss()<<"; ";
-	}
-		cout<<endl;
-	}
-
-	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++)
-	cout<<father->getOptimalPartitions()[i];
+	cout<<"Parameters"<<endl;
+	vector<float> p=father->getParameters(0.00001);
+	for (unsigned int i=0; i<p.size(); i++)
+		cout<<p[i]<<" - ";
 	cout<<endl;
-	for (unsigned int i=0; i<child1->getOptimalPartitions().size(); i++)
-	cout<<child1->getOptimalPartitions()[i];
+
+
+	father->computeAggregation(0.8);
+
+
+//	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++){
+//		for (unsigned int j=0; j<father->getOptimalPartitions().size()-i; j++){
+//			cout<<child1->getQualities()[i][j]->getGain()<<"; ";
+//	}
+//		cout<<endl;
+//	}
+//
+//	for (unsigned int i=0; i<father->getOptimalPartitions().size(); i++){
+//		for (unsigned int j=0; j<father->getOptimalPartitions().size()-i; j++){
+//			cout<<child1->getQualities()[i][j]->getLoss()<<"; ";
+//	}
+//		cout<<endl;
+//	}
+
+	for (unsigned int i=0; i<father->getBestPartitions().size(); i++)
+	cout<<father->getBestPartitions()[i];
 	cout<<endl;
-	for (unsigned int i=0; i<child2->getOptimalPartitions().size(); i++)
-	cout<<child2->getOptimalPartitions()[i];
+	for (unsigned int i=0; i<child1->getBestPartitions().size(); i++)
+	cout<<child1->getBestPartitions()[i];
+	cout<<endl;
+	for (unsigned int i=0; i<child2->getBestPartitions().size(); i++)
+	cout<<child2->getBestPartitions()[i];
 	cout<<endl;
 	return 0;
 }

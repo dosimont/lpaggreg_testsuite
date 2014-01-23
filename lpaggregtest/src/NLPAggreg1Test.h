@@ -22,7 +22,7 @@
 #include <string>
 #include <string.h>
 #include "CSVIterator.h"
-#include <NLPAggreg1.h>
+#include <lpaggreg/NLPAggreg1.h>
 
 using namespace std;
 

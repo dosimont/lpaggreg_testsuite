@@ -20,7 +20,7 @@
 #include <time.h>
 #include <string>
 #include <string.h>
-#include <DLPAggreg2.h>
+#include <lpaggreg/DLPAggreg1.h>
 
 int f_DLPAggreg2Test();
 
