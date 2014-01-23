@@ -6,10 +6,10 @@
  */
 
 #include "DLPAggreg2Test.h"
-#define SIZE 20
-#define NODES 18
+#define SIZE 30
+#define NODES 10
 #define CHILDS 2
-#define THRESHOLD 0.00001
+#define THRESHOLD 0.0001
 
 
 int f_DLPAggreg2Test(){
@@ -35,9 +35,10 @@ int f_DLPAggreg2Test(){
 		}
 	}
 	nodes[0]->computeQualities(false);
+
+			vector<float> p=nodes[0]->getParameters(THRESHOLD);
 	while(true){
 		cout<<endl<<endl<<"Parameters"<<endl<<endl;
-		vector<float> p=nodes[0]->getParameters(THRESHOLD);
 		for (unsigned int i=0; i<p.size(); i++)
 			cout<<p[i]<<" ";
 		cout<<endl;
